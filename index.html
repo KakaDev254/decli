@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeCli Engineering</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config Overrides -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1E3A5F", // from poster
+              accent1: "#F5A623",
+              accent2: "#FFD166",
+              neutral: "#F4F4F4",
+              bg: "#FFFFFF",
+            },
+            fontFamily: {
+              heading: ["Poppins", "sans-serif"],
+              body: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+      @keyframes pulseBtn {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 4px 15px rgba(245, 166, 35, 0.5);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 6px 20px rgba(245, 166, 35, 0.7);
+        }
+      }
+
+      .animate-pulse-btn {
+        animation: pulseBtn 2s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="font-body bg-bg text-gray-800">
+    <!-- HEADER -->
+    <header class="bg-primary shadow-md sticky top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16"
+      >
+        <!-- Logo & Brand Name -->
+        <a href="#" class="flex items-center space-x-2">
+          <img src="assets/decli_poster.jpg" class="h-10 w-auto" />
+          <span class="font-heading font-bold text-white text-lg"
+            >DeCli Engineering</span
+          >
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden lg:flex space-x-6 font-heading text-white">
+          <a href="#" class="hover:text-accent1 transition">Home</a>
+          <a href="#" class="hover:text-accent1 transition">About</a>
+          <a href="#" class="hover:text-accent1 transition">Services</a>
+          <a href="#" class="hover:text-accent1 transition">Projects</a>
+          <a href="#contact" class="hover:text-accent1 transition">Contact</a>
+        </nav>
+
+        <!-- Hamburger Button -->
+        <button
+          id="menu-btn"
+          class="lg:hidden text-white text-3xl focus:outline-none"
+        >
+          <i class="bx bx-menu"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-primary border-t border-primary-dark"
+      >
+        <nav class="flex flex-col p-4 space-y-3 text-white font-heading">
+          <a href="#" class="hover:text-accent1 transition">Home</a>
+          <a href="#" class="hover:text-accent1 transition">About</a>
+          <a href="#" class="hover:text-accent1 transition">Services</a>
+          <a href="#" class="hover:text-accent1 transition">Projects</a>
+          <a href="#contact" class="hover:text-accent1 transition">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section
+      class="relative h-[80vh] bg-center bg-cover bg-fixed flex items-center justify-center text-center text-white"
+      style="background-image: url('assets/hero2.jpg')"
+    >
+      <!-- Gradient Overlay -->
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40"
+      ></div>
+
+      <!-- Content -->
+      <div class="relative z-10 max-w-4xl px-4">
+        <!-- Headings -->
+        <h1
+          class="text-3xl sm:text-4xl md:text-6xl font-heading font-bold leading-tight mb-2 tracking-wide animate-fadeInUp delay-100"
+        >
+          Building
+        </h1>
+        <h1
+          class="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-2 tracking-wide animate-fadeInUp delay-200"
+        >
+          Tomorrow's
+        </h1>
+        <h1
+          class="text-3xl sm:text-4xl md:text-6xl text-accent1 font-heading font-bold leading-tight mb-6 tracking-wide animate-fadeInUp delay-300"
+        >
+          Infrastructure
+        </h1>
+
+        <!-- Tagline -->
+        <p
+          class="text-base sm:text-lg md:text-xl mb-8 font-body text-gray-200 leading-relaxed max-w-3xl mx-auto animate-fadeInUp delay-400"
+        >
+          Professional engineering and construction solutions for airports,
+          residential, transport, water systems, ports, and energy projects.
+          Excellence delivered on time, every time.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp delay-500"
+        >
+          <a
+            href="#contact"
+            class="px-6 py-3 sm:px-8 sm:py-4 bg-primary text-white font-semibold rounded-md hover:bg-primary/80 hover:shadow-lg transition duration-300"
+          >
+            Start Your Project
+          </a>
+          <a
+            href="#projects"
+            class="px-6 py-3 sm:px-8 sm:py-4 bg-accent1 text-white font-semibold rounded-md hover:bg-white hover:text-primary shadow-lg transition duration-300"
+          >
+            Watch Our Work
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-16 max-w-7xl mx-auto px-4">
+      <!-- Heading -->
+      <div class="text-center mb-12 max-w-3xl mx-auto animate-fadeUpSection">
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-primary leading-tight inline-block"
+        >
+          Engineering & Construction <br />
+          Solutions
+          <!-- Accent Bar after the heading -->
+          <span
+            class="block mt-2 w-16 h-1 bg-accent1 rounded-full mx-auto"
+          ></span>
+        </h2>
+        <p
+          class="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed animate-fadeUpSection delay-100"
+        >
+          From concept to completion, we deliver comprehensive construction and
+          engineering services across multiple sectors with unmatched quality
+          and precision.
+        </p>
+      </div>
+
+      <!-- Service Cards -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Airports -->
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1 animate-fadeUpSection delay-200"
+        >
+          <i class="bx bxs-plane-alt text-accent1 text-4xl mb-4"></i>
+          <h3 class="font-heading text-xl mb-2">Airports</h3>
+          <p>
+            Complete airport infrastructure development including runways,
+            terminals, and support facilities.
+          </p>
+          <ul class="mt-2 list-disc list-inside text-gray-600">
+            <li>Terminal Construction</li>
+            <li>Runway Engineering</li>
+            <li>Air Traffic Systems</li>
+            <li>Ground Support</li>
+          </ul>
+        </div>
+
+        <!-- Residential -->
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1 animate-fadeUpSection delay-300"
+        >
+          <i class="bx bxs-building-house text-accent1 text-4xl mb-4"></i>
+          <h3 class="font-heading text-xl mb-2">Residential</h3>
+          <p>
+            Luxury residential complexes and housing developments with modern
+            amenities and sustainable design.
+          </p>
+          <ul class="mt-2 list-disc list-inside text-gray-600">
+            <li>High-rise Apartments</li>
+            <li>Luxury Villas</li>
+            <li>Smart Home Integration</li>
+            <li>Sustainable Design</li>
+          </ul>
+        </div>
+
+        <!-- Transport & Rail -->
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1 animate-fadeUpSection delay-400"
+        >
+          <i class="bx bxs-train text-accent1 text-4xl mb-4"></i>
+          <h3 class="font-heading text-xl mb-2">Transport & Rail</h3>
+          <p>
+            Railway systems, stations, and transportation infrastructure for
+            efficient public transit.
+          </p>
+          <ul class="mt-2 list-disc list-inside text-gray-600">
+            <li>Railway Construction</li>
+            <li>Station Development</li>
+            <li>Signal Systems</li>
+            <li>Maintenance Facilities</li>
+          </ul>
+        </div>
+
+        <!-- Water Systems -->
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1 animate-fadeUpSection delay-500"
+        >
+          <i class="bx bxs-droplet text-accent1 text-4xl mb-4"></i>
+          <h3 class="font-heading text-xl mb-2">Water Systems</h3>
+          <p>
+            Water treatment plants, distribution networks, and sustainable water
+            management solutions.
+          </p>
+          <ul class="mt-2 list-disc list-inside text-gray-600">
+            <li>Treatment Plants</li>
+            <li>Pipeline Networks</li>
+            <li>Water Storage</li>
+            <li>Quality Control</li>
+          </ul>
+        </div>
+
+        <!-- Ports -->
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1 animate-fadeUpSection delay-600"
+        >
+          <i class="bx bxs-ship text-accent1 text-4xl mb-4"></i>
+          <h3 class="font-heading text-xl mb-2">Ports</h3>
+          <p>
+            Port facilities, marine structures, and logistics infrastructure for
+            maritime operations.
+          </p>
+          <ul class="mt-2 list-disc list-inside text-gray-600">
+            <li>Port Terminals</li>
+            <li>Marine Structures</li>
+            <li>Cargo Handling</li>
+            <li>Navigation Systems</li>
+          </ul>
+        </div>
+
+        <!-- Energy -->
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1 animate-fadeUpSection delay-700"
+        >
+          <i class="bx bxs-bolt text-accent1 text-4xl mb-4"></i>
+          <h3 class="font-heading text-xl mb-2">Energy</h3>
+          <p>
+            Power generation facilities, renewable energy projects, and
+            electrical infrastructure.
+          </p>
+          <ul class="mt-2 list-disc list-inside text-gray-600">
+            <li>Power Plants</li>
+            <li>Solar Farms</li>
+            <li>Grid Infrastructure</li>
+            <li>Smart Systems</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fade-up Animation CSS -->
+    <style>
+      @keyframes fadeUpSection {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeUpSection {
+        animation: fadeUpSection 0.8s ease-out forwards;
+      }
+
+      .animate-fadeUpSection.delay-100 {
+        animation-delay: 0.1s;
+      }
+      .animate-fadeUpSection.delay-200 {
+        animation-delay: 0.2s;
+      }
+      .animate-fadeUpSection.delay-300 {
+        animation-delay: 0.3s;
+      }
+      .animate-fadeUpSection.delay-400 {
+        animation-delay: 0.4s;
+      }
+    </style>
+    <!-- TRACK RECORD / STATS COUNTER -->
+    <section class="py-20 bg-primary">
+      <div class="max-w-7xl mx-auto px-4 text-center text-white">
+        <!-- Heading -->
+        <div class="mb-12 animate-fadeUpSection">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold leading-tight"
+          >
+            Our Track Record <br />
+            <span class="text-accent1">Speaks for Itself</span>
+          </h2>
+          <p class="mt-4 text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
+            Numbers that reflect our commitment to excellence, reliability, and
+            client satisfaction across all our construction and engineering
+            projects.
+          </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- Projects Completed -->
+          <div
+            class="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg animate-fadeUpSection delay-200"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-accent1/20 text-accent1 text-2xl"
+            >
+              <i class="bx bxs-building-house"></i>
+            </div>
+            <div
+              class="text-4xl font-heading font-bold counter"
+              data-target="115"
+            >
+              0
+            </div>
+            <p class="mt-2 font-semibold text-lg">Projects Completed</p>
+            <p class="text-sm mt-1">
+              Successfully delivered across all sectors
+            </p>
+          </div>
+
+          <!-- Years Experience -->
+          <div
+            class="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg animate-fadeUpSection delay-300"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-accent1/20 text-accent1 text-2xl"
+            >
+              <i class="bx bxs-user"></i>
+            </div>
+            <div
+              class="text-4xl font-heading font-bold counter"
+              data-target="8"
+            >
+              0
+            </div>
+            <p class="mt-2 font-semibold text-lg">Years Experience</p>
+            <p class="text-sm mt-1">Decades of construction excellence</p>
+          </div>
+
+          <!-- Client Satisfaction -->
+          <div
+            class="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg animate-fadeUpSection delay-400"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-accent1/20 text-accent1 text-2xl"
+            >
+              <i class="bx bxs-medal"></i>
+            </div>
+            <div
+              class="text-4xl font-heading font-bold counter"
+              data-target="100"
+            >
+              0
+            </div>
+            <p class="mt-2 font-semibold text-lg">Client Satisfaction</p>
+            <p class="text-sm mt-1">Perfect record of happy clients</p>
+          </div>
+
+          <!-- On-Time Delivery -->
+          <div
+            class="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg animate-fadeUpSection delay-500"
+          >
+            <div
+              class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-accent1/20 text-accent1 text-2xl"
+            >
+              <i class="bx bxs-time"></i>
+            </div>
+            <div
+              class="text-4xl font-heading font-bold counter"
+              data-target="66"
+            >
+              0
+            </div>
+            <p class="mt-2 font-semibold text-lg">On-Time Delivery</p>
+            <p class="text-sm mt-1">Projects completed on schedule</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS GALLERY -->
+    <section class="py-16 bg-neutral">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Heading -->
+        <div class="text-center mb-12 max-w-3xl mx-auto animate-fadeUpSection">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-primary leading-tight inline-block"
+          >
+            Featured <br />
+            Projects
+            <span
+              class="ml-4 w-12 h-1 bg-accent1 rounded-full inline-block"
+            ></span>
+          </h2>
+          <p
+            class="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed animate-fadeUpSection delay-100"
+          >
+            Explore our portfolio of successfully completed projects across
+            various sectors, showcasing our commitment to excellence and
+            innovation.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <button
+            class="filter-btn px-6 py-2 bg-primary/10 text-primary font-semibold rounded-full shadow-sm hover:bg-primary hover:text-white transition"
+            data-filter="all"
+          >
+            All Projects
+          </button>
+          <button
+            class="filter-btn px-6 py-2 bg-primary/10 text-primary font-semibold rounded-full shadow-sm hover:bg-accent1 hover:text-white transition"
+            data-filter="commercial"
+          >
+            Commercial
+          </button>
+          <button
+            class="filter-btn px-6 py-2 bg-primary/10 text-primary font-semibold rounded-full shadow-sm hover:bg-accent1 hover:text-white transition"
+            data-filter="residential"
+          >
+            Residential
+          </button>
+          <button
+            class="filter-btn px-6 py-2 bg-primary/10 text-primary font-semibold rounded-full shadow-sm hover:bg-accent1 hover:text-white transition"
+            data-filter="infrastructure"
+          >
+            Infrastructure
+          </button>
+        </div>
+
+        <!-- Project Grid -->
+        <div id="project-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <!-- Residential Project -->
+          <div
+            class="project-card residential relative group overflow-hidden rounded-lg shadow-lg animate-fadeUpSection delay-200"
+          >
+            <img
+              src="assets/afterreal.jpg"
+              class="w-full h-64 object-cover"
+              alt="Residential Project"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+            >
+              <i class="bx bx-plus text-white text-4xl">House Upgrade After</i>
+            </div>
+          </div>
+          <div
+            class="project-card residential relative group overflow-hidden rounded-lg shadow-lg animate-fadeUpSection delay-200"
+          >
+            <img
+              src="assets/before.jpg"
+              class="w-full h-64 object-cover"
+              alt="Residential Project"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+            >
+              <i class="bx bx-plus text-white text-4xl">House Before upgrade</i>
+            </div>
+          </div>
+
+          <!-- Commercial Project -->
+          <div
+            class="project-card commercial relative group overflow-hidden rounded-lg shadow-lg animate-fadeUpSection delay-300"
+          >
+            <img
+              src="assets/mansionette.jpg"
+              class="w-full h-64 object-cover"
+              alt="Commercial Project"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+            >
+              <i class="bx bx-plus text-white text-4xl"
+                >Five bedroom maisonette construction.</i
+              >
+            </div>
+          </div>
+          <div
+            class="project-card commercial relative group overflow-hidden rounded-lg shadow-lg animate-fadeUpSection delay-300"
+          >
+            <img
+              src="assets/pr.jpg"
+              class="w-full h-64 object-cover"
+              alt="Commercial Project"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+            >
+              <i class="bx bx-plus text-white text-4xl"
+                >Our Engineer Inspecting Site</i
+              >
+            </div>
+          </div>
+
+          <!-- Infrastructure Project -->
+          <div
+            class="project-card infrastructure relative group overflow-hidden rounded-lg shadow-lg animate-fadeUpSection delay-400"
+          >
+            <img
+              src="assets/mesh.jpg"
+              class="w-full h-64 object-cover"
+              alt="Infrastructure Project"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+            >
+              <i class="bx bx-plus text-white text-4xl"></i>
+            </div>
+          </div>
+          <div
+            class="project-card infrastructure relative group overflow-hidden rounded-lg shadow-lg animate-fadeUpSection delay-400"
+          >
+            <img
+              src="assets/interpret.jpg"
+              class="w-full h-64 object-cover"
+              alt="Infrastructure Project"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+            >
+              <i class="bx bx-plus text-white text-4xl"></i>
+            </div>
+          </div>
+        </div>
+        <!-- View All Projects Button -->
+        <div class="text-center mt-12">
+          <a
+            href="#all-projects"
+            class="inline-block px-8 py-3 bg-accent1 text-white font-semibold rounded-full shadow-lg hover:bg-accent1/90 transition transform animate-pulse-btn"
+          >
+            View All Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section
+      class="relative h-[60vh] flex items-center justify-center text-center text-white"
+      style="
+        background: linear-gradient(
+            rgba(30, 58, 95, 0.6),
+            rgba(30, 58, 95, 0.6)
+          ),
+          url('assets/hero3.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+      "
+    >
+      <!-- Overlay (optional for extra contrast) -->
+      <div class="absolute inset-0 bg-primary opacity-30"></div>
+
+      <!-- Content -->
+      <div class="relative z-10 max-w-3xl px-4 animate-fadeUpSection">
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4"
+        >
+          Let’s Build Your Vision Together
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
+          Partner with us for engineering and construction solutions that
+          deliver excellence, on time and on budget.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            class="px-6 py-3 sm:px-8 sm:py-4 bg-accent1 text-primary font-semibold rounded-md hover:bg-yellow-500 transition shadow-lg"
+          >
+            Start Your Project
+          </a>
+          <a
+            href="#projects"
+            class="px-6 py-3 sm:px-8 sm:py-4 border-2 border-white text-white font-semibold rounded-md hover:bg-white hover:text-primary transition shadow-lg"
+          >
+            Watch Our Work
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fade-up Animation CSS (if not already in your code) -->
+    <style>
+      @keyframes fadeUpSection {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeUpSection {
+        animation: fadeUpSection 0.8s ease-out forwards;
+      }
+    </style>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-16 bg-neutral">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-heading text-primary mb-10 text-center">
+          Contact Us
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Contact Information Card -->
+          <div class="bg-white rounded-lg shadow p-8 space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="bg-yellow-100 p-3 rounded-lg">
+                <i class="bx bx-phone text-yellow-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-semibold">Phone Numbers</h4>
+                <p>0791186387</p>
+                <p>0715293308</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="bg-blue-100 p-3 rounded-lg">
+                <i class="bx bx-envelope text-blue-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-semibold">Email Address</h4>
+                <p>info@decliconstruction.com</p>
+                <p>projects@decliconstruction.com</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="bg-gray-100 p-3 rounded-lg">
+                <i class="bx bx-map text-gray-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-semibold">Office Location</h4>
+                <p>Professional Construction Services</p>
+                <p>Engineering Excellence Center</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="bg-yellow-100 p-3 rounded-lg">
+                <i class="bx bx-time text-yellow-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-semibold">Business Hours</h4>
+                <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                <p>Saturday: 9:00 AM - 4:00 PM</p>
+                <p>Sunday: Emergency Only</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quote Form Card -->
+          <div class="bg-white rounded-lg shadow p-8">
+            <h3 class="font-heading text-xl mb-6">Get Your Free Quote</h3>
+            <form class="space-y-4">
+              <div class="grid md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Full Name *"
+                  class="w-full border p-3 rounded"
+                  required
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number *"
+                  class="w-full border p-3 rounded"
+                  required
+                />
+              </div>
+              <input
+                type="email"
+                placeholder="Email Address *"
+                class="w-full border p-3 rounded"
+                required
+              />
+              <select class="w-full border p-3 rounded" required>
+                <option value="">Select project type *</option>
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="civil">Civil Engineering</option>
+              </select>
+              <textarea
+                placeholder="Project Details *"
+                class="w-full border p-3 rounded"
+                rows="5"
+                required
+              ></textarea>
+              <button
+                type="submit"
+                class="w-full bg-accent1 text-white font-semibold py-3 rounded hover:bg-accent2 transition flex items-center justify-center space-x-2"
+              >
+                <span>Send Quote Request</span>
+                <i class="bx bx-send"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-primary text-white py-10">
+      <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+        <div>
+          <img src="logo.png" alt="DeCli Engineering" class="h-12 mb-4" />
+          <p>Quality construction for every vision.</p>
+        </div>
+        <div>
+          <h4 class="font-heading mb-3">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-accent1">Home</a></li>
+            <li><a href="#" class="hover:text-accent1">Services</a></li>
+            <li><a href="#" class="hover:text-accent1">Projects</a></li>
+            <li><a href="#contact" class="hover:text-accent1">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-heading mb-3">Follow Us</h4>
+          <div class="flex space-x-4">
+            <i class="bx bxl-facebook text-2xl hover:text-accent1"></i>
+            <i class="bx bxl-instagram text-2xl hover:text-accent1"></i>
+            <i class="bx bxl-linkedin text-2xl hover:text-accent1"></i>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-8 text-sm">
+        &copy; 2025 DeCli Engineering. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+      // Mobile menu toggle
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Gallery filter
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const filter = btn.dataset.filter;
+          filterBtns.forEach((b) =>
+            b.classList.remove("bg-primary", "text-white")
+          );
+          btn.classList.add("bg-primary", "text-white");
+          projectCards.forEach((card) => {
+            if (filter === "all" || card.classList.contains(filter)) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
+      });
+
+      // Stats counter
+      const counters = document.querySelectorAll(".counter");
+      let counterStarted = false;
+      const startCounters = () => {
+        counters.forEach((counter) => {
+          const target = +counter.dataset.target;
+          let count = 0;
+          const increment = target / 100;
+          const update = () => {
+            count += increment;
+            if (count < target) {
+              counter.textContent = Math.ceil(count);
+              requestAnimationFrame(update);
+            } else {
+              counter.textContent = target;
+            }
+          };
+          update();
+        });
+      };
+      window.addEventListener("scroll", () => {
+        const statsSection =
+          document.querySelector(".counter").parentElement.parentElement;
+        const sectionTop = statsSection.getBoundingClientRect().top;
+        if (!counterStarted && sectionTop < window.innerHeight) {
+          startCounters();
+          counterStarted = true;
+        }
+      });
+    </script>
+  </body>
+</html>
